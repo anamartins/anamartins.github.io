@@ -5,8 +5,7 @@ body {
 }
 
 .wrapper {
-  background: url("/background.59c06501.png") no-repeat;
-  /* background-size: 100%; */
+  background: url("background.59c06501.png") no-repeat;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
@@ -14,7 +13,7 @@ body {
 }
 
 .worm {
-  background: url("/worm.31f111e4.png") no-repeat;
+  background: url("worm.31f111e4.png") no-repeat;
   background-size: auto 100%;
   height: 100px;
   margin: 0.5rem 0rem 0rem 8rem;
@@ -26,7 +25,7 @@ body {
   flex-flow: row wrap;
   justify-content: center;
   padding: 1rem 0 2rem 0;
-  cursor: url("/cursor.3457ebd8.png"), default;
+  cursor: url("cursor.3457ebd8.png"), default;
   
 }
 
@@ -44,7 +43,7 @@ body {
 }
 
 [data-status="hungry"] {
-  cursor: url("/cursor-worm.b6504ff4.png"), default;
+  cursor: url("cursor-worm.b6504ff4.png"), default;
 }
 
 .winner {
