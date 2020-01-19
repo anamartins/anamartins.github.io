@@ -149,7 +149,7 @@ function setHearts() {
     hearts.appendChild(div);
     div.className = "heart";
     var img = document.createElement("img");
-    img.src = "../img/heart" + random + ".svg";
+    img.src = "img/heart" + random + ".svg";
     div.appendChild(img);
     var p = document.createElement("p");
     div.appendChild(p);
