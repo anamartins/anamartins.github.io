@@ -73,7 +73,7 @@ body {
   visibility: hidden;
   position: absolute;
   top: 25%;
-  width: 50%;
+  width: 80%;
   height: 40%;
   display: flex;
   flex-direction: column;
@@ -86,8 +86,8 @@ body {
 
 .game-over button,
 .win button {
-  width: 25%;
-  padding: 1%;
+  width: 50%;
+  padding: 3%;
   font-size: 1rem;
   border: 0.2rem solid #333;
   border-radius: 5px;
@@ -142,6 +142,16 @@ body {
   .card {
     width: 18%;
   }
+
+  .game-over,
+  .win {
+    width: 50%;
+  }
+
+  .game-over button,
+  .win button {
+    width: 50%;
+  }
 }
 
 @media (min-width: 850px) {
@@ -152,6 +162,19 @@ body {
   .card {
     width: 17%;
   }
+
+  .game-over,
+  .win {
+    width: 50%;
+  }
+
+  .game-over button,
+  .win button {
+    width: 25%;
+    padding: 1%;
+  }
+
+
 }
 
 

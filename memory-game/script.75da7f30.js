@@ -149,7 +149,7 @@ function setHearts() {
     hearts.appendChild(div);
     div.className = "heart";
     var img = document.createElement("img");
-    img.src = "img/heart" + random + ".svg";
+    img.src = "/img/heart" + random + ".svg";
     div.appendChild(img);
     var p = document.createElement("p");
     div.appendChild(p);
@@ -321,10 +321,14 @@ function finish(className, delay) {
 
 function collectCards() {
   var cards = document.querySelectorAll(".card");
+  var container = document.querySelector(".container");
+  var containerPosition = container.getBoundingClientRect();
+  var topContainer = containerPosition.top;
+  var leftContainer = containerPosition.left;
 
   for (var i = 0; i < numberCards * 2; i++) {
-    var left = window.innerWidth / 2 - position[0].width;
-    var top = window.innerHeight / 2 - position[0].height;
+    var left = window.innerWidth / 2 - position[0].width - leftContainer;
+    var top = window.innerHeight / 2 - position[0].height - topContainer;
     var card = cards[i];
     card.style.top = top + "px";
     card.style.left = left + "px";
