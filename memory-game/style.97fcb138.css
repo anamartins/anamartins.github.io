@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card {
+  width: 10%;
+  perspective: 1000px;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.spin {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.spin-click {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background-color: #FFF;
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+.card-back {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.card-back img {
+  background-color: #FFDB58;
+}
+
+.card-front img,
+.card-back img {
+  border: 0.3rem solid #000;
+  border-radius: 5px;
+  padding: 0.5%;
+}
+
+.game-over,
+.win {
+  visibility: hidden;
+  position: absolute;
+  top: -25%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over button,
+.win button {
+  width: 10%;
+  padding: 1%;
+  font-size: 1rem;
+  border: 0.2rem solid #333;
+  border-radius: 5px;
+  color: #333;
+}
+
+.game-over button:hover,
+.win button:hover {
+  color: #FFF;
+  background-color: #333;
+}
+
+.game-over p,
+.win p {
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hearts {
+  display: flex;
+  margin: 2rem;
+  align-self: flex-end;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.heart {
+  display: flex;
+  position: relative;
+}
+
+.heart img {
+  width: 50px;
+}
+
+.heart p {
+  position: absolute;
+  color: red;
+  font-size: 75px;
+  font-family: "East Sea Dokdo", Arial, sans-serif;
+  left: 0.5rem;
+  top: -1.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+/*# sourceMappingURL=/style.97fcb138.css.map */
