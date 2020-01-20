@@ -175,7 +175,7 @@ function createContainer() {
   }
 
   setTimeout(showAllCards, 500);
-  setTimeout(flipAllCards, 2500);
+  setTimeout(flipAllCards, 7500);
 }
 
 function placeCards(num) {
