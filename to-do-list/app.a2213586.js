@@ -34820,7 +34820,7 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "everything"
-      }, _react.default.createElement("h1", null, "Winning Adulthood"), this.state.showModal ? _react.default.createElement(_modal.default, {
+      }, _react.default.createElement("h1", null, "Winning at Adulthood"), this.state.showModal ? _react.default.createElement(_modal.default, {
         showModal: this.showModal
       }) : null, _react.default.createElement(_text.default, {
         addItem: this.addItem
