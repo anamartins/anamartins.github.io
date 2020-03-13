@@ -33063,7 +33063,7 @@ function (_React$Component) {
       }, _react.default.createElement("div", {
         className: this.props.done ? "star" : "hide-star"
       }, _react.default.createElement("img", {
-        src: "img/golden-star.svg"
+        src: "/img/golden-star.svg"
       })), _react.default.createElement("p", null, this.props.value), _react.default.createElement("a", {
         onClick: this.deleteCard
       }, "delete"));
@@ -34578,7 +34578,7 @@ function (_React$Component) {
         className: "close",
         onClick: this.onButtonClick
       }, "X"), _react.default.createElement("h1", null, "Hooray!"), _react.default.createElement("img", {
-        src: "img/archievement.svg"
+        src: "/img/archievement.svg"
       }), _react.default.createElement("p", null, "You're free! Enjoy it!"), _react.default.createElement(_reactTwitterEmbed.TwitterShareButton, {
         url: "",
         options: {
@@ -34820,7 +34820,7 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "everything"
-      }, _react.default.createElement("h1", null, "Winning at Adulthood"), this.state.showModal ? _react.default.createElement(_modal.default, {
+      }, _react.default.createElement("h1", null, "Winning Adulthood"), this.state.showModal ? _react.default.createElement(_modal.default, {
         showModal: this.showModal
       }) : null, _react.default.createElement(_text.default, {
         addItem: this.addItem
