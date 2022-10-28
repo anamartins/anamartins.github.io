@@ -37709,7 +37709,7 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "everything"
-      }, _react.default.createElement("h1", null, "How much time left?"), _react.default.createElement(_date.default, {
+      }, _react.default.createElement("h1", null, "How much time...?"), _react.default.createElement(_date.default, {
         onDateChange: this.onDateChange,
         knownDate: this.state.userDate
       }), this.state.userDate && _react.default.createElement(_timer.default, {
@@ -37750,7 +37750,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58597" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53161" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
