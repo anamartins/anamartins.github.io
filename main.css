@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+section {
+    margin: 5% 0 5% 5%;
+}
+section > section {
+    margin: 5% 0 5% 0;
+}
+
+h1 {
+    font-family: 'Domine', serif;
+    font-weight: 700;
+    font-size: 3rem;
+    margin: 5% 0 1% 0 ;
+}
+
+h2 {
+    font-family: 'Domine', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 3% 0 1% 0 ;
+}
+
+h3 {
+    font-family: 'Domine', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 3% 0 1% 0 ;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+a {
+    color: deeppink;
+    text-decoration: none;
+}
+a:hover{
+    font-weight: bolder;
+    background-color: deeppink;
+    color: white;
+}
