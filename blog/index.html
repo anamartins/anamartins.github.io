@@ -1,20 +1,102 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&family=Noto+Sans&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon-names=chevron_forward,check_box,check_box_outline_blank" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Ana Martins - Blog</title>
 </head>
 <body>
-    <header><h1>Blog Title</h1></header>
+    <header><h1 class="blog-title">Ana Martins - Blog</h1></header>
+    <main id="main-index">
+        <div class="column">
+            <h2>Latest posts</h2>
+            
+                <h3 class="latest-posts-item">
+                    <span class="material-symbols-outlined">
+                        chevron_forward
+                    </span>
+                    <a href="/blog/posts/creating-blog-eleventy/">Creating a blog with Eleventy</a>
+                </h3>
+            
+                <h3 class="latest-posts-item">
+                    <span class="material-symbols-outlined">
+                        chevron_forward
+                    </span>
+                    <a href="/blog/posts/hello-world/">Hello, World</a>
+                </h3>
+            
+        </div>
 
-    homepage
-    
-        <h2><a href="/blog/posts/post1/">Post 1</a></h2>
-    
-        <h2><a href="/blog/posts/post2/">Post 2</a></h2>
-    
-    
+        <div class="column todo-list">
+            <h2>To-do List</h2>
+            <ul>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Create an easier way to publish posts</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Add icons in social media area</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Add resume</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Unify the the website style</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Add RSS plugin</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Create other layouts</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Add date at index and post page</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Create different post lists for different tags</span>
+                </li>
+                <li class="todo-list-item">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <span>Add style for Code Blocks</span>
+                </li>
+            </ul>
+        </div>
+    </main>  
+    <footer id="footer-post">
+        <h3>Say hello</h3>
+        <ul class="footer-social-media">
+            <li><a href="https://www.linkedin.com/in/anacmartins/" target="_blank">Linkedin</a></li>
+            <li><a href="https://github.com/anamartins" target="_blank">Github</a></li>
+        </ul>
+    </footer>
 </body>
 </html>

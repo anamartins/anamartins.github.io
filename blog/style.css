@@ -1,0 +1,186 @@
+:root {
+    --white: #FFFFFF;
+    --blue:#1C2167;
+    --dark-blue: #050a4a;
+    --dark-pink: #D11881;
+    --light-pink: #F170B9;
+    --brat-lime: #1AD32D;
+
+    --margin: 1rem;
+}
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--blue);
+    color: var(--white);
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 100;
+}
+
+#post {
+    display: grid;
+    grid-template-areas: 
+        "nav"
+        "header"
+        "main"
+        "sidebar"
+        "footer";
+}
+
+#nav-post {
+    grid-area: nav;
+    display: flex;
+    margin: var(--margin);
+}
+
+header {
+    margin: calc(var(--margin) * 2) var(--margin);
+}
+
+#header-post {
+    grid-area: header;
+}
+
+main {
+    margin: var(--margin);
+    line-height: 2rem;
+}
+
+#main-post {
+    grid-area: main;
+}
+
+#main-post p {
+    margin-bottom: var(--margin)
+}
+
+#main-index {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.todo-list{
+    border: 3px dashed #FFF;
+    border-radius: 10px;;
+    padding: 2rem;
+    margin-top: var(--margin);
+}
+
+.todo-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.todo-list-item,
+.latest-posts-item {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 900;
+}
+
+.blog-title {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    display: flex;
+}
+
+a {
+    color: var(--light-pink);
+    text-decoration: underline;
+}
+
+a:hover {
+    color:var(--white);
+    background: var(--dark-pink);
+    text-decoration: none;
+}
+
+#sidebar-post {
+    grid-area: sidebar;
+    padding: 1rem;
+    border-top: 1px solid var(--dark-blue)
+}
+
+.sidebar-other-posts {
+    padding:0;
+    margin: 1rem 0;
+}
+
+.sidebar-other-posts-item {
+    padding: 0.3rem;
+    list-style: none;
+}
+
+.material-symbols-outlined {
+    margin-right: 5px;
+}
+
+footer {
+    background-color: var(--dark-blue);
+    padding: 2rem;
+    width: 100%;
+}
+
+#footer-post {
+    grid-area: footer;
+    margin-top: var(--margin)
+}
+
+.footer-social-media {
+    display: flex;
+    list-style-type: none;
+    padding:0;
+    margin-top: var(--margin)
+}
+
+.footer-social-media li {
+    margin-right: 1rem;
+}
+
+code,
+pre {
+    background-color: var(--dark-blue);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.post-step-by-step li {
+    margin: var(--margin) 0; 
+}
+
+@media screen and (min-width: 600px){
+    #post {
+        grid-template-areas: 
+            "nav nav nav nav"
+            "header header header sidebar"
+            "main main main sidebar"
+            "footer footer footer footer";
+    }
+
+    #sidebar-post {
+        border-top: none;
+        border-left: 1px solid var(--dark-blue);
+        padding-left: 2rem; 
+    }
+
+    #main-index {
+        flex-direction: row;
+    }
+
+    .todo-list {
+        margin-top: 0;
+    }
+}
