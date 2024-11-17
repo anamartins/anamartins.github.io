@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:base="https://anamartins.github.io/blog/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ana Martins - Blog</title>
+    <link>https://anamartins.github.io/blog/</link>
+    <atom:link href="https://anamartins.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Blog about my learning path with Javascript and its friends.</description>
+    <language>en</language>
+    <item>
+      <title>Hello, World</title>
+      <link>https://anamartins.github.io/blog/posts/hello-world/</link>
+      <description>&lt;p&gt;Does people still use this? Maybe it became chessy, but i like to use it.
+So heeey, my name is Ana and I am going to do here a old-school blog. I want to register my learning process and some things I am thinking and studying. I am the kind of person who likes to take notes. It&#39;s easier to remember when I take notes.&lt;/p&gt;
+&lt;p&gt;This blog is made with &lt;a href=&quot;https://www.11ty.dev/&quot;&gt;Eleventy&lt;/a&gt;, and after build, I add the pages in my Github Pages repository and then push it to here, but in the future I want to make this process a little better and more automatized. But for now I like this old school way to publish content on internet.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 15 Nov 2024 01:00:00 GMT</pubDate>
+      <dc:creator>Ana Martins</dc:creator>
+      <guid>https://anamartins.github.io/blog/posts/hello-world/</guid>
+    </item>
+    <item>
+      <title>Creating a blog with Eleventy</title>
+      <link>https://anamartins.github.io/blog/posts/creating-blog-eleventy/</link>
+      <description>&lt;p&gt;Last week, I decided that I want to have a technical blog again. I had one some time ago, when I studied SEO, and it helped me to understand everything better. Now that I am a frontend developer, it&#39;s time again.&lt;/p&gt;
+&lt;p&gt;So I was looking for a simple way to publish my posts. I found some options, but Eleventy drew my attention: it is simple, has a big community online, and &lt;a href=&quot;https://www.11ty.dev/docs/&quot; target=&quot;_blank&quot;&gt;the documentation is good&lt;/a&gt;. So I have found &lt;a href=&quot;https://www.youtube.com/watch?v=kzf9A9tkkl4&quot;&gt;this video&lt;/a&gt; in Eleventy&#39;s Get Started and it seemed very simple so I decided to give it a try.&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/kzf9A9tkkl4?si=6bJ5ISIslhMV6y-A&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;I am going to list here how I did for this blog, mixing the Get Started with the content from the video. I will be extremely detailed.&lt;/p&gt;
+&lt;h2&gt;Step-by-step&lt;/h2&gt;
+&lt;ol class=&quot;post-step-by-step&quot;&gt;
+    &lt;li&gt;
+        Create a new folder where you want to keep the blog in your computer.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Create a package.json file. For this, you need to go to the folder you just created and type &lt;code&gt;npm init -y&lt;/code&gt; in terminal. If you don&#39;t know what is a terminal, see &lt;a href=&quot;https://www.11ty.dev/docs/terminal-window/&quot; target=&quot;_blank&quot;&gt;this article from Eleventy&lt;/a&gt;.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Install Eleventy typing &lt;code&gt;npm install @11ty/eleventy&lt;/code&gt;.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Create an index.html file. At &lt;a href=&quot;https://youtu.be/kzf9A9tkkl4?si=Rxxg-2f39VreNeXF&amp;t=10&quot; target=&quot;_blank&quot;&gt;0:10 in the video&lt;/a&gt;, we can see a very nice Visual Code trick: after creating the empty html file, type &lt;code&gt;;html:5&lt;/code&gt; and press enter. The whole basic html structure will appear for you. Add some text in the html.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Run Eleventy typing &lt;code&gt;npx @11ty/eleventy --serve&lt;/code&gt; in the terminal. Click in the link in the terminal (it will be something like &lt;code&gt;http://localhost:8080/&lt;/code&gt;). You will see the text there.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Now it&#39;s time to create the posts. Create a folder called posts and a file called post1.md. You can change the file name after with the right name of the post. Type something in the file and save. Add &lt;code&gt;/posts/post1.md&lt;/code&gt; in the URL to see you post there.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Now it&#39;s time to create a layout file for the posts. Create a new folder called &lt;code&gt;_includes&lt;/code&gt;. This is the default name of the folder and apparently you can rename it in the configuration file (as said in &lt;a href=&quot;https://youtu.be/kzf9A9tkkl4?si=5CbzOh_0iRiRtO-u&amp;t=89&quot; target=&quot;_blank&quot;&gt;1min30seg in the video&lt;/a&gt;). Then you create a new file in _includes folder called layout.html. In the video you have to remove the html from index.html and paste it on layout.html, but I personally just copied the content from index in layout. The index file is the home page from the blog, so it has a different layout. Here, only the posts have the template.
+    &lt;/li&gt;
+    &lt;li&gt;You also need to add where the content will appear in the template. For this just add the word &lt;code&gt;content&lt;/code&gt; between double curly braces, in the same way it is done in the video at the minute &lt;a href=&quot;https://youtu.be/kzf9A9tkkl4?si=xol3LEgGxeC_rhI0&amp;t=124 target=&quot; _blank&quot;=&quot;&quot;&gt;2min4seg&lt;/a&gt;.
+     &lt;pre tabindex=&quot;0&quot;&gt;&lt;code&gt;{{ content }}&lt;/code&gt;&lt;/pre&gt;
+    &lt;/li&gt;&lt;li&gt;
+        Then you have connect this layout to the posts. So create a file called posts.json in the posts folder. Note that the .json file should have the same name of the folder. Add this to the file (sorry for the poor identation. It&#39;s something related to the &lt;a href=&quot;https://github.com/11ty/eleventy-plugin-syntaxhighlight&quot; target=&quot;_blank&quot;&gt;plugin I&#39;m using&lt;/a&gt; and I need to improve the style).
+&lt;p&gt;&lt;/p&gt;&lt;pre class=&quot;language-json&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;&amp;quot;layout&amp;quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;layout.html&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;In this way, all the files in this folder will have the same layout. Note that in the video, it is also shown how to add a layout in only one file (at &lt;a href=&quot;https://youtu.be/kzf9A9tkkl4?si=yl2F3GBQSdMj5KKj&amp;t=110&quot; target=&quot;_blank&quot;&gt;1min50seg in the video&lt;/a&gt;), but for this blog I did not do this.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+Now it is time to get a title and date in your posts. Add this at the top of post1.md:&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token hr punctuation&quot;&gt;---&lt;/span&gt;
+title: Post 1 title
+&lt;span class=&quot;token hr punctuation&quot;&gt;---&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;br&gt;
+Now go back in layout.html and add the word &lt;code&gt;title&lt;/code&gt; between double curly braces in title tag:
+&lt;pre tabindex=&quot;0&quot;&gt;&lt;code&gt;{{title}}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+We are now create a list of all posts in home page. So go to posts.json and change it to this:
+&lt;pre class=&quot;language-json&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;&amp;quot;layout&amp;quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;layout.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;&amp;quot;tags&amp;quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;post&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;br&gt;
+Now go to index.html and add this:
+&lt;pre class=&quot;language-html&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;{% for post in collections.post %}
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h3&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;quot;&lt;/span&gt;latest-posts-item&lt;span class=&quot;token punctuation&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;a&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;quot;&lt;/span&gt;{{post.url}}&lt;span class=&quot;token punctuation&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;{{post.data.title}}&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+{% endfor %}&lt;/code&gt;&lt;/pre&gt;
+This will make all the posts in the collection post appear in a list.
+&lt;/li&gt;&lt;p&gt;&lt;/p&gt;
+&lt;/ol&gt;
+&lt;p&gt;And that&#39;s it. After this you will have a very simple blog to start having some fun. Eleventy recommends that we go to &lt;a href=&quot;https://www.11ty.dev/docs/tutorials/&quot; target=&quot;_blank&quot;&gt;tutorials page&lt;/a&gt; to take a look in what we can do and install &lt;a href=&quot;https://www.11ty.dev/docs/plugins/official/&quot; target=&quot;_blank&quot;&gt;some plugins&lt;/a&gt; to add other features. I am excited to start improving this blog. Let&#39;s see what I can do. :)&lt;/p&gt;
+</description>
+      <pubDate>Fri, 15 Nov 2024 01:00:00 GMT</pubDate>
+      <dc:creator>Ana Martins</dc:creator>
+      <guid>https://anamartins.github.io/blog/posts/creating-blog-eleventy/</guid>
+    </item>
+  </channel>
+</rss>
