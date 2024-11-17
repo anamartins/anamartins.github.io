@@ -7,15 +7,69 @@
     <description>Blog about my learning path with Javascript and its friends.</description>
     <language>en</language>
     <item>
-      <title>Hello, World</title>
-      <link>https://anamartins.github.io/blog/posts/hello-world/</link>
-      <description>&lt;p&gt;Does people still use this? Maybe it became chessy, but i like to use it.
-So heeey, my name is Ana and I am going to do here a old-school blog. I want to register my learning process and some things I am thinking and studying. I am the kind of person who likes to take notes. It&#39;s easier to remember when I take notes.&lt;/p&gt;
-&lt;p&gt;This blog is made with &lt;a href=&quot;https://www.11ty.dev/&quot;&gt;Eleventy&lt;/a&gt;, and after build, I add the pages in my Github Pages repository and then push it to here, but in the future I want to make this process a little better and more automatized. But for now I like this old school way to publish content on internet.&lt;/p&gt;
+      <title>Add the Eleventy RSS plugin</title>
+      <link>https://anamartins.github.io/blog/posts/eleventy-rss-plugin/</link>
+      <description>&lt;p&gt;The first to-do I have completed in the list I add in &lt;a href=&quot;https://anamartins.github.io/blog/&quot;&gt;homepage&lt;/a&gt; is a simple one: add the &lt;a href=&quot;https://www.11ty.dev/docs/plugins/rss/&quot; target=&quot;_blank&quot;&gt;RSS plugin&lt;/a&gt;. I needed a easy win.&lt;/p&gt;
+&lt;p&gt;Besides the basic structure we got when we installed Eleventy, all extra things will be get using plugins. There&#39;s plugins for everything; &lt;a href=&quot;https://www.11ty.dev/docs/plugins/official/&quot; target=&quot;_blank&quot;&gt;some of them are official&lt;/a&gt; - made by Eleventy teaam - and some of them are &lt;a href=&quot;https://www.11ty.dev/docs/plugins/community/&quot; target=&quot;_blank&quot;&gt;created by the strong community&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;RSS is one of the official plugins and it is a very simple one. Turns out this is a very good example to understand how plugins work in Eleventy.&lt;/p&gt;
+&lt;h2&gt;How to install the RSS template&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Open the terminal and type 
+    &lt;pre tabindex=&quot;0&quot;&gt;&lt;code&gt;npm install @11ty/eleventy-plugin-rss&lt;/code&gt;&lt;/pre&gt; 
+    You will notice that something new was added in you &lt;code&gt;package.json&lt;/code&gt;
+    &lt;/li&gt;&lt;li&gt;I opted for using the &lt;a href=&quot;https://www.11ty.dev/docs/plugins/rss/#virtual-template&quot;&gt;virtual template&lt;/a&gt;. So I got my &lt;code&gt;eleventy.config.js&lt;/code&gt; and added this inside my export default function:
+    &lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;eleventyConfig&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addPlugin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;feedPlugin&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token literal-property property&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rss&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// or &quot;rss&quot;, &quot;json&quot;&lt;/span&gt;
+      &lt;span class=&quot;token literal-property property&quot;&gt;outputPath&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/blog/feed.xml&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token literal-property property&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// iterate over `collections.posts`&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;token comment&quot;&gt;// 0 means no limit&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token literal-property property&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Ana Martins - Blog&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;subtitle&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Blog about my learning path with Javascript and its friends.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://anamartins.github.io/blog/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token literal-property property&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;token literal-property property&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Ana Martins&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    Don&#39;t forget to import the package doing 
+    &lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; feedPlugin &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@11ty/eleventy-plugin-rss&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you &lt;strong&gt;do not have a config file yet&lt;/strong&gt;, just create a new file in the root of your project called &lt;code&gt;eleventy.config.js&lt;/code&gt; and add this:
+&lt;/p&gt;&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; feedPlugin &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;@11ty/eleventy-plugin-rss&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;eleventyConfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+eleventyConfig&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addPlugin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;syntaxHighlight&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;preAttributes&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;tabindex&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+eleventyConfig&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addPlugin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;feedPlugin&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;rss&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// or &amp;quot;rss&amp;quot;, &amp;quot;json&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;outputPath&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;/blog/feed.xml&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// iterate over &lt;code&gt;collections.posts&lt;/code&gt;&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;token comment&quot;&gt;// 0 means no limit&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;Ana Martins - Blog&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;subtitle&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;Blog about my learning path with Javascript and its friends.&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;https://anamartins.github.io/blog/&amp;quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token literal-property property&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;quot;Ana Martins&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/p&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;Replace my data with your data.&lt;/li&gt;&lt;p&gt;&lt;/p&gt;
+&lt;/ol&gt;
+And that&#39;s it! Go and check the url you added in &lt;code&gt;outputPath&lt;/code&gt;. Mine is &lt;a href=&quot;https://anamartins.github.io/blog/feed.xml&quot; target=&quot;_blank&quot;&gt;https://anamartins.github.io/blog/feed.xml&lt;/a&gt;
 </description>
-      <pubDate>Fri, 15 Nov 2024 01:00:00 GMT</pubDate>
+      <pubDate>Sun, 17 Nov 2024 01:00:00 GMT</pubDate>
       <dc:creator>Ana Martins</dc:creator>
-      <guid>https://anamartins.github.io/blog/posts/hello-world/</guid>
+      <guid>https://anamartins.github.io/blog/posts/eleventy-rss-plugin/</guid>
     </item>
     <item>
       <title>Creating a blog with Eleventy</title>
@@ -81,9 +135,20 @@ This will make all the posts in the collection post appear in a list.
 &lt;/ol&gt;
 &lt;p&gt;And that&#39;s it. After this you will have a very simple blog to start having some fun. Eleventy recommends that we go to &lt;a href=&quot;https://www.11ty.dev/docs/tutorials/&quot; target=&quot;_blank&quot;&gt;tutorials page&lt;/a&gt; to take a look in what we can do and install &lt;a href=&quot;https://www.11ty.dev/docs/plugins/official/&quot; target=&quot;_blank&quot;&gt;some plugins&lt;/a&gt; to add other features. I am excited to start improving this blog. Let&#39;s see what I can do. :)&lt;/p&gt;
 </description>
-      <pubDate>Fri, 15 Nov 2024 01:00:00 GMT</pubDate>
+      <pubDate>Sat, 16 Nov 2024 01:00:00 GMT</pubDate>
       <dc:creator>Ana Martins</dc:creator>
       <guid>https://anamartins.github.io/blog/posts/creating-blog-eleventy/</guid>
+    </item>
+    <item>
+      <title>Hello, World</title>
+      <link>https://anamartins.github.io/blog/posts/hello-world/</link>
+      <description>&lt;p&gt;Does people still use this? Maybe it became chessy, but i like to use it.
+So heeey, my name is Ana and I am going to do here a old-school blog. I want to register my learning process and some things I am thinking and studying. I am the kind of person who likes to take notes. It&#39;s easier to remember when I take notes.&lt;/p&gt;
+&lt;p&gt;This blog is made with &lt;a href=&quot;https://www.11ty.dev/&quot;&gt;Eleventy&lt;/a&gt;, and after build, I add the pages in my Github Pages repository and then push it to here, but in the future I want to make this process a little better and more automatized. But for now I like this old school way to publish content on internet.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 15 Nov 2024 01:00:00 GMT</pubDate>
+      <dc:creator>Ana Martins</dc:creator>
+      <guid>https://anamartins.github.io/blog/posts/hello-world/</guid>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon-names=arrow_left_alt" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&family=Noto+Sans&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../blog/style.css" />
+    <title>Add the Eleventy RSS plugin - Ana Martins - Blog</title>
+</head>
+<body id="post">
+    <nav id="nav-post">
+        <span class="material-symbols-outlined">
+            arrow_left_alt
+        </span>
+        <a href="/blog/index.html">Home</a>
+    </nav>
+    <header id="header-post"><h1 class="post-title">Add the Eleventy RSS plugin</h1></header>
+    <sidebar id="sidebar-post">
+        <h2 class="sidebar-other-posts-title">Latest posts</h3>
+        <ul class="sidebar-other-posts">
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/eleventy-rss-plugin/">Add the Eleventy RSS plugin</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/creating-blog-eleventy/">Creating a blog with Eleventy</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/hello-world/">Hello, World</a>
+                </li>
+            
+        </ul>
+    
+    </sidebar>
+    <main id="main-post">
+        <p>The first to-do I have completed in the list I add in <a href="/blog/">homepage</a> is a simple one: add the <a href="https://www.11ty.dev/docs/plugins/rss/" target="_blank">RSS plugin</a>. I needed a easy win.</p>
+<p>Besides the basic structure we got when we installed Eleventy, all extra things will be get using plugins. There's plugins for everything; <a href="https://www.11ty.dev/docs/plugins/official/" target="_blank">some of them are official</a> - made by Eleventy teaam - and some of them are <a href="https://www.11ty.dev/docs/plugins/community/" target="_blank">created by the strong community</a>.</p>
+<p>RSS is one of the official plugins and it is a very simple one. Turns out this is a very good example to understand how plugins work in Eleventy.</p>
+<h2>How to install the RSS template</h2>
+<ol>
+    <li>Open the terminal and type 
+    <pre tabindex="0"><code>npm install @11ty/eleventy-plugin-rss</code></pre> 
+    You will notice that something new was added in you <code>package.json</code>
+    <li>I opted for using the <a href="https://www.11ty.dev/docs/plugins/rss/#virtual-template">virtual template</a>. So I got my <code>eleventy.config.js</code> and added this inside my export default function:
+    <pre class="language-js" tabindex="0"><code class="language-js">eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>feedPlugin<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"rss"</span><span class="token punctuation">,</span> <span class="token comment">// or "rss", "json"</span>
+      <span class="token literal-property property">outputPath</span><span class="token operator">:</span> <span class="token string">"/blog/feed.xml"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">collection</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"post"</span><span class="token punctuation">,</span> <span class="token comment">// iterate over `collections.posts`</span>
+        <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>     <span class="token comment">// 0 means no limit</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">metadata</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">language</span><span class="token operator">:</span> <span class="token string">"en"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Ana Martins - Blog"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">subtitle</span><span class="token operator">:</span> <span class="token string">"Blog about my learning path with Javascript and its friends."</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">base</span><span class="token operator">:</span> <span class="token string">"https://anamartins.github.io/blog/"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">author</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Ana Martins"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    Don't forget to import the package doing 
+    <pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> feedPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@11ty/eleventy-plugin-rss"</span><span class="token punctuation">;</span></code></pre>
+<p>If you <strong>do not have a config file yet</strong>, just create a new file in the root of your project called <code>eleventy.config.js</code> and add this:
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> feedPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@11ty/eleventy-plugin-rss&quot;</span><span class="token punctuation">;</span></p>
+<p><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>syntaxHighlight<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">preAttributes</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">tabindex</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>feedPlugin<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">&quot;rss&quot;</span><span class="token punctuation">,</span> <span class="token comment">// or &quot;rss&quot;, &quot;json&quot;</span>
+<span class="token literal-property property">outputPath</span><span class="token operator">:</span> <span class="token string">&quot;/blog/feed.xml&quot;</span><span class="token punctuation">,</span>
+<span class="token literal-property property">collection</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;post&quot;</span><span class="token punctuation">,</span> <span class="token comment">// iterate over <code>collections.posts</code></span>
+<span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>     <span class="token comment">// 0 means no limit</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token literal-property property">metadata</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">language</span><span class="token operator">:</span> <span class="token string">&quot;en&quot;</span><span class="token punctuation">,</span>
+<span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">&quot;Ana Martins - Blog&quot;</span><span class="token punctuation">,</span>
+<span class="token literal-property property">subtitle</span><span class="token operator">:</span> <span class="token string">&quot;Blog about my learning path with Javascript and its friends.&quot;</span><span class="token punctuation">,</span>
+<span class="token literal-property property">base</span><span class="token operator">:</span> <span class="token string">&quot;https://anamartins.github.io/blog/&quot;</span><span class="token punctuation">,</span>
+<span class="token literal-property property">author</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;Ana Martins&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li>Replace my data with your data.</li></p>
+</ol>
+And that's it! Go and check the url you added in <code>outputPath</code>. Mine is <a href="https://anamartins.github.io/blog/feed.xml" target="_blank">https://anamartins.github.io/blog/feed.xml</a>
+
+    </main>
+    <footer id="footer-post">
+        <div class="footer-social-media">
+            <h2>Say hello</h3>
+            <ul class="footer-social-media-list">
+                <li><a href="https://www.linkedin.com/in/anacmartins/" target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/anamartins" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <a href="/blog/feed.xml" class="rss-link">rss</a>
+    </footer>
+   
+</body>
+</html>

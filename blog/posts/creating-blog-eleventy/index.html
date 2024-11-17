@@ -18,8 +18,12 @@
     </nav>
     <header id="header-post"><h1 class="post-title">Creating a blog with Eleventy</h1></header>
     <sidebar id="sidebar-post">
-        <h3 class="sidebar-other-posts-title">Latest posts</h3>
+        <h2 class="sidebar-other-posts-title">Latest posts</h3>
         <ul class="sidebar-other-posts">
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/eleventy-rss-plugin/">Add the Eleventy RSS plugin</a>
+                </li>
             
                 <li class="sidebar-other-posts-item">
                     <a href="/blog/posts/creating-blog-eleventy/">Creating a blog with Eleventy</a>
@@ -96,11 +100,14 @@ This will make all the posts in the collection post appear in a list.
 
     </main>
     <footer id="footer-post">
-        <h3>Say hello</h3>
-        <ul class="footer-social-media">
-            <li><a href="https://www.linkedin.com/in/anacmartins/" target="_blank">Linkedin</a></li>
-            <li><a href="https://github.com/anamartins" target="_blank">Github</a></li>
-        </ul>
+        <div class="footer-social-media">
+            <h2>Say hello</h3>
+            <ul class="footer-social-media-list">
+                <li><a href="https://www.linkedin.com/in/anacmartins/" target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/anamartins" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <a href="/blog/feed.xml" class="rss-link">rss</a>
     </footer>
    
 </body>
