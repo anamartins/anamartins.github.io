@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon-names=arrow_left_alt" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&family=Noto+Sans&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../blog/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../../blog/css/prism-z-touch.css" />
+
+    <title>Creating a blog with Eleventy - Ana Martins - Blog</title>
+</head>
+<body id="post">
+    <nav id="nav-post">
+        <span class="material-symbols-outlined">
+            arrow_left_alt
+        </span>
+        <a href="/blog/index.html">Home</a>
+    </nav>
+    <header id="header-post"><h1 class="post-title">Creating a blog with Eleventy</h1></header>
+    <sidebar id="sidebar-post">
+        <h2 class="sidebar-other-posts-title">Latest posts</h3>
+        <ul class="sidebar-other-posts">
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/css-battles/">What we do with the box-shadows</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/eleventy-rss-plugin/">Add the Eleventy RSS plugin</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/creating-blog-eleventy/">Creating a blog with Eleventy</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/hello-world/">Hello, World</a>
+                </li>
+            
+        </ul>
+    
+    </sidebar>
+    <main id="main-post">
+        <p>Last week, I decided that I want to have a technical blog again. I had one some time ago, when I studied SEO, and it helped me to understand everything better. Now that I am a frontend developer, it's time again.</p>
+<p>So I was looking for a simple way to publish my posts. I found some options, but <a href="https://www.11ty.dev/" target="_blank">Eleventy</a> drew my attention: it is simple, has a big community online, and <a href="https://www.11ty.dev/docs/" target="_blank">the documentation is good</a>. So I have found <a href="https://www.youtube.com/watch?v=kzf9A9tkkl4">this video</a> in Eleventy's Get Started and it seemed very simple so I decided to give it a try.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kzf9A9tkkl4?si=6bJ5ISIslhMV6y-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>I am going to list here what I did to create this humble little blog, mixing the Get Started with the content from the video. The editor I used is the <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>.</p>
+<h2>Step-by-step</h2>
+<ol>
+<li>Create a new folder where you want to keep the blog in your computer.</li>
+<li>Open the folder you just created on terminal and start a new project by running the command <code>npm init -y</code> in terminal.</li>
+<li>Install Eleventy typing <code>npm install @11ty/eleventy</code>.</li>
+<li>Create an index.html file. At <a href="https://youtu.be/kzf9A9tkkl4?si=Rxxg-2f39VreNeXF&t=10" target="_blank">0:10 in the video</a>, we can see a very nice Visual Code trick: after creating the empty html file, type <code>;html:5</code> and press enter. The whole basic html structure will appear for you. Add some text in the html.</li>
+<li>Run Eleventy typing <code>npx @11ty/eleventy --serve</code> in the terminal. Click in the link in the terminal (it will be something like <code>http://localhost:8080/</code>). You will see the text there (this is called a <a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank">code snippet</a>).</li>
+<li>Now it's time to create the posts. Create a folder called <code>posts</code> and a file called <code>post1.md</code>. You can change the file name after with the right name of the post. Type something in the file and save. Add <code>/posts/post1</code> in the URL to see you post there. Every file you create in this folder will be a different post on your blog.</li>
+<li>Now it's time to create a layout file for the posts. Create a new folder called <code>_includes</code>. This is the default name of the folder and apparently you can rename it in the configuration file (as said in <a href="https://youtu.be/kzf9A9tkkl4?si=5CbzOh_0iRiRtO-u&t=89" target="_blank">1min30seg in the video</a>). Then you create a new file in _includes folder called layout.html. In the video you have to remove the content from index.html and paste it on layout.html, but I personally just copied the content from index in layout. The index file is the home page from the blog, so it has a different layout. Here, only the posts have the template.</li>
+<li>You also need to add where the content will appear in the template. For this just add the word <pre class="language-html"><code class="language-html">{{ content }}</code></pre> inside the main tags:</li>
+</ol>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span>
+  {{ content }}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span></code></pre>
+<ol start="9">
+<li>Then you have connected this layout to the posts. So create a file called posts.json in the posts folder. Note that the .json file should have the same name of the folder. Add this to the file.</li>
+</ol>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span> 
+    <span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"layout.html"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In this way, all the files in this folder will have the same layout.
+10.  Now it is time to add a title and date to your posts. Add this at the top of post1.md:
+<pre class="language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
+title: Post 1 title
+<span class="token hr punctuation">---</span></code></pre></p>
+<p>Go back in layout.html and add the title in title tag:
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>{{ title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span></code></pre>
+11.  We are now going to create a list of all posts on the home page. So go to posts.json and change it to this:</p>
+<pre class="language-json"><code class="language-json"><span class="highlight-line"><span class="token punctuation">{</span> </span>
+<span class="highlight-line">    <span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"layout.html"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token property">"tags"</span><span class="token operator">:</span> <span class="token string">"post"</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Now go to index.html and add this:</p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token liquid language-liquid"><span class="token delimiter punctuation">{%</span> <span class="token keyword">for</span> post <span class="token keyword">in</span> collections<span class="token punctuation">.</span>post <span class="token delimiter punctuation">%}</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>latest-posts-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token liquid language-liquid"><span class="token delimiter punctuation">{{</span>post<span class="token punctuation">.</span>url<span class="token delimiter punctuation">}}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token liquid language-liquid"><span class="token delimiter punctuation">{{</span>post<span class="token punctuation">.</span>data<span class="token punctuation">.</span>title<span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+<span class="token liquid language-liquid"><span class="token delimiter punctuation">{%</span> <span class="token keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+<p>This will make all the posts in the collection post appear in a list.</p>
+<p>And that's it! After this you will have a very simple blog to start having some fun. Eleventy recommends that we go to <a href="https://www.11ty.dev/docs/tutorials/" target="_blank">tutorials page</a> to take a look in what we can do and install <a href="https://www.11ty.dev/docs/plugins/official/" target="_blank">some plugins</a> to add other features. I am excited to start improving this blog. Let's see what I can do. :)</p>
+
+    </main>
+    <footer id="footer-post">
+        <div class="footer-social-media">
+            <h2>Say hello</h3>
+            <ul class="footer-social-media-list">
+                <li><a href="https://www.linkedin.com/in/anacmartins/" target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/anamartins" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <a href="/blog/feed.xml" class="rss-link">rss</a>
+    </footer>
+   
+</body>
+</html>

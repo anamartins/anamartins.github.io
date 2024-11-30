@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon-names=arrow_left_alt" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&family=Noto+Sans&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../blog/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../../blog/css/prism-z-touch.css" />
+
+    <title>What we do with the box-shadows - Ana Martins - Blog</title>
+</head>
+<body id="post">
+    <nav id="nav-post">
+        <span class="material-symbols-outlined">
+            arrow_left_alt
+        </span>
+        <a href="/blog/index.html">Home</a>
+    </nav>
+    <header id="header-post"><h1 class="post-title">What we do with the box-shadows</h1></header>
+    <sidebar id="sidebar-post">
+        <h2 class="sidebar-other-posts-title">Latest posts</h3>
+        <ul class="sidebar-other-posts">
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/what-we-do-in-the-box-shadows/">What we do with the box-shadows</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/css-battles/">What we do with the box-shadows</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/eleventy-rss-plugin/">Add the Eleventy RSS plugin (work in progress)</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/creating-blog-eleventy/">Creating a blog with Eleventy</a>
+                </li>
+            
+                <li class="sidebar-other-posts-item">
+                    <a href="/blog/posts/hello-world/">Hello, World</a>
+                </li>
+            
+        </ul>
+    
+    </sidebar>
+    <main id="main-post">
+        <p>Every now and then I get a &quot;CSS phase&quot;. The latest one started when I discovered <a href="https://cssbattle.dev/" target="_blank">CSSBattle</a>. This website has daily challenges where you need to reproduce an image with CSS with the least amount of characters. I am horrible, extremely verbose, but I must say I got obsessed.</p>
+<p>One of my favorite things is looking at other people's solutions, and this was how I discovered that my other fellow css-battlers uses <code>box-shadow</code> a lot there, and then I got super curiours about it. They basically use this property to replicate one retangle forever and ever. I'll show how.</p>
+<h2>The box-shadow property</h2>
+<p>There are lots of arrangements for this property, according to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow" target="_blank">documentation</a>. But the one we use here is <code>top left color</code>. So, for example:</p>
+<p><img width=50% src="https://firebasestorage.googleapis.com/v0/b/cssbattleapp.appspot.com/o/user%2Fe6YbeBahWNPT7VpE2rE2p85byxa2%2Ftargets%2Ftarget_m3BxAL2@2x.png?alt=media" /><br/>
+(CSSBattle daily target for 16/11/2024)</p>
+<p>In this image we see only one div; the other ones are shadows. So, the html will be:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p>The CSS will be:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">{</span>
+   <span class="token property">background</span><span class="token punctuation">:</span> #6592CF<span class="token punctuation">;</span>
+   <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+   <span class="token property">top</span><span class="token punctuation">:</span> 52px<span class="token punctuation">;</span>
+   <span class="token property">left</span><span class="token punctuation">:</span> 52px<span class="token punctuation">;</span>
+   <span class="token property">width</span><span class="token punctuation">:</span> 70px<span class="token punctuation">;</span>
+   <span class="token property">height</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+   <span class="token property">background</span><span class="token punctuation">:</span> #EEB850<span class="token punctuation">;</span>
+   <span class="token property">box-shadow</span><span class="token punctuation">:</span>
+       0 75px #243D83<span class="token punctuation">,</span> 0 150px #EEB850<span class="token punctuation">,</span>
+       105px 0 #243D83<span class="token punctuation">,</span> 210px 0 #EEB850<span class="token punctuation">,</span>
+       105px 75px #EEB850<span class="token punctuation">,</span> 210px 75px #243D83<span class="token punctuation">,</span>
+       105px 150px #243D83<span class="token punctuation">,</span> 210px 150px #EEB850<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that the top and left properties are in <code>px</code>, and the distances are relative to the first one.</p>
+<p>Maybe I'm the only one, but I think that this is sooo interesting. I'll continue my studies with CSS an I'll let you if I find other cool things.</p>
+
+    </main>
+    <footer id="footer-post">
+        <div class="footer-social-media">
+            <h2>Say hello</h3>
+            <ul class="footer-social-media-list">
+                <li><a href="https://www.linkedin.com/in/anacmartins/" target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/anamartins" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <a href="/blog/feed.xml" class="rss-link">rss</a>
+    </footer>
+   
+</body>
+</html>
